@@ -14,11 +14,19 @@ GAP = TILE_W / 10
 ORIGIN_X = 0 - TILE_W * 2.5 - GAP * 2.0
 ORIGIN_Y = 0 + TILE_H * 3.0 + GAP * 2.5
 
-def new_target():
+def read_allowed_words():
     f = open("words.txt")
     words = f.readlines()
     f.close()
-    pick = random.choice(words).strip().upper()
+    clean_words = []
+    for word in words:
+        clean_words.append(word.strip().upper())
+    return clean_words
+
+ALLOWED_WORDS = read_allowed_words()
+
+def new_target():
+    pick = random.choice(ALLOWED_WORDS).strip().upper()
     return pick
 
 target = new_target().upper()
@@ -91,7 +99,9 @@ while play:
 
     turn = 0
     while turn < 6:
-        guess = input('Enter 5-letter word: ').upper()
+        guess = None
+        while guess not in ALLOWED_WORDS: 
+            guess = input('Enter 5-letter word: ').upper()
         guesses[turn] = guess
         output(target, guesses)
         scr.update()   
