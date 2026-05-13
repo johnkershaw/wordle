@@ -1,2 +1,7 @@
+cd
 git config --global user.name "John Kershaw"
 git config --global user.email "john.kershaw@bxs.org.uk"
+
+mkdir my_first_git
+cd my_first_git
+
