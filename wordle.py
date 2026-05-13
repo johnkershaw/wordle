@@ -1,4 +1,5 @@
 import turtle
+import random
 
 WHITE = 'white'
 GREY = '#787C7E'
@@ -13,7 +14,14 @@ GAP = TILE_W / 10
 ORIGIN_X = 0 - TILE_W * 2.5 - GAP * 2.0
 ORIGIN_Y = 0 + TILE_H * 3.0 + GAP * 2.5
 
-target = 'PLUME'
+def new_target():
+    f = open("words.txt")
+    words = f.readlines()
+    f.close()
+    pick = random.choice(words).strip().upper()
+    return pick
+
+target = new_target().upper()
 
 guesses = ['STOCK', 'ARISE', 'BUDGE', 'PLUME', '     ', '     ']
 guesses = [' ' * 5] * 6
@@ -92,6 +100,6 @@ while play:
             print('You win!')
             break
     else:
-        print('LOSERRRRRRRRR!!!!')
+        print(f'The word was {target}')
 
     play = input('Play again? ')[0].upper() == 'Y'
