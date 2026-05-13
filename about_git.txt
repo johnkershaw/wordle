@@ -1,0 +1,2 @@
+git config --global user.name "John Kershaw"
+git config --global user.email "john.kershaw@bxs.org.uk"
