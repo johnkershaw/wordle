@@ -29,7 +29,7 @@ def new_target():
     pick = random.choice(ALLOWED_WORDS).strip().upper()
     return pick
 
-target = new_target().upper()
+
 
 guesses = ['STOCK', 'ARISE', 'BUDGE', 'PLUME', '     ', '     ']
 guesses = [' ' * 5] * 6
@@ -95,6 +95,7 @@ assert compare('PLUME', 'KEVIN') == [GREY, YELLOW, GREY, GREY, GREY]
 
 play = True
 while play: 
+    target = new_target().upper()
     output(target, guesses)   # draw the empty grid
 
     turn = 0
@@ -113,3 +114,4 @@ while play:
         print(f'The word was {target}')
 
     play = input('Play again? ')[0].upper() == 'Y'
+    guesses = [' '*5] * 6
