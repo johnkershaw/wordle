@@ -15,7 +15,7 @@ ORIGIN_X = 0 - TILE_W * 2.5 - GAP * 2.0
 ORIGIN_Y = 0 + TILE_H * 3.0 + GAP * 2.5
 
 def read_allowed_words():
-    f = open("words.txt")
+    f = open("words_all.txt")
     words = f.readlines()
     f.close()
     clean_words = []
@@ -31,7 +31,6 @@ def new_target():
 
 
 
-guesses = ['STOCK', 'ARISE', 'BUDGE', 'PLUME', '     ', '     ']
 guesses = [' ' * 5] * 6
 
 scr = turtle.Screen()
@@ -103,6 +102,8 @@ while play:
         guess = None
         while guess not in ALLOWED_WORDS: 
             guess = input('Enter 5-letter word: ').upper()
+            if guess not in ALLOWED_WORDS:
+                print("Guess not in Wordle's dictionary")
         guesses[turn] = guess
         output(target, guesses)
         scr.update()   
